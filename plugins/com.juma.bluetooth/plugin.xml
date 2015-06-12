@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.juma.bluetooth" version="0.1">
+
+    <name>JumaSDKLite</name>
+    <description>The "JumaSDKLite" is a professional Bluetooth plugin. It is the core implementation of Universal Bluetooth JavaScript API by a Bluetooth expert team. It supports both Bluetooth 4.0 GATT interface in iOS/Android</description>
+    <license>Apache 2.0</license>
+    <keywords>JumaSDKLite,bluetooth</keywords>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+	
+    <js-module src="www/com.juma.bluetooth.sdklite/www/jumaSDKLite.js" name="sdklite.jumasdklite">
+         <merges target="JumaSDKLite" />
+    </js-module>
+	
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="JumaSDKLite">
+                <param name="android-package" value="com.juma.bluetooth.sdklite.JumaSDKLite"/>
+            </feature>
+        </config-file>
+		
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+        </config-file>
+		
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        </config-file>
+
+        <source-file src="src/android/com/juma/bluetooth/sdklite/JumaSDKLite.java" target-dir="src/com/juma/bluetooth/sdklite" />
+		
+		<source-file src="src/android/libs/juma-sdk-lite.jar" target-dir="libs" />
+
+    </platform>
+<!--    
+
+ ios
+ <platform name="ios">
+     <config-file target="config.xml" parent="/*">
+         <feature name="BCBluetooth">
+             <param name="ios-package" value="BCBluetooth"/>
+         </feature>
+     </config-file>
+     <header-file src="src/ios/BCBluetooth.h" />
+	<source-file src="src/ios/BCBluetooth.m" />
+     <framework src="CoreBluetooth.framework" weak="true" />
+ </platform> -->
+
+</plugin>
